@@ -1,145 +1,146 @@
   </main>
 
-  <!-- FOOTER GLOBAL -->
-  <footer class="w-full bg-[#1f1b18] text-[#f8efea] mt-20 pt-16 pb-12 border-t border-neutral-800">
+  <  <!-- FOOTER GLOBAL Y2K -->
+  <footer class="w-full bg-[#05040a] text-[#f8fafc] mt-20 pt-16 pb-12 border-t border-[#00f0ff]/30 shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-800">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
         
         <!-- Brand & Mission Column -->
         <div class="lg:col-span-2">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-11 h-11 rounded-2xl bg-white p-1 border border-neutral-700 shadow-md flex items-center justify-center shrink-0 overflow-hidden">
-              <img src="assets/images/logo-camello.jpg" alt="Logo Camello" class="w-full h-full object-contain" />
+            <div class="w-12 h-12 rounded-2xl bg-[#16122d] p-1 border border-[#00f0ff]/50 shadow-[0_0_15px_rgba(0,240,255,0.4)] flex items-center justify-center shrink-0 overflow-hidden">
+              <img src="assets/images/logo-camello.jpg" alt="Logo Camello" class="w-full h-full object-contain filter drop-shadow-[0_0_6px_rgba(0,240,255,0.5)]" />
             </div>
             <div>
-              <span class="font-headline font-extrabold text-2xl text-white tracking-tight">Échele Camello</span>
-              <span class="text-xs text-[#ca4a1c] block font-semibold">Salarios Transparentes & Empleo Digno</span>
+              <span class="font-headline font-extrabold text-2xl text-white tracking-tight flex items-center gap-2">
+                Échele Camello
+                <span class="text-xs px-2 py-0.5 rounded-full bg-[#ff007f] text-white font-mono">2000</span>
+              </span>
+              <span class="text-xs text-[#00f0ff] block font-mono mt-0.5">✦ CYBER-TALENTO & SALARIOS LATAM ✦</span>
             </div>
           </div>
           
-          <p className="text-sm text-neutral-400 max-w-sm leading-relaxed mb-6">
-            La plataforma líder de movilidad laboral en Colombia y LATAM. Cero ofertas fantasma, rangos salariales transparentes y conexión directa con las empresas de mayor crecimiento.
+          <p class="text-xs sm:text-sm text-neutral-400 max-w-sm leading-relaxed mb-6 font-body">
+            Ecosistema de movilidad laboral retro-futurista para Colombia y LATAM. Cero ofertas fantasma, rangos salariales transparentes y conexión directa con el futuro del trabajo.
           </p>
 
           <div class="flex items-center gap-2">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-300">
-              <span class="w-2 h-2 rounded-full bg-[#16a34a]"></span>
-              Base de Datos MySQL Sincronizada en XAMPP
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#16122d] border border-[#00f0ff]/30 text-xs text-[#00f0ff] font-mono">
+              <span class="w-2 h-2 rounded-full bg-[#00ff88] animate-pulse"></span>
+              MYSQL_XAMPP // ONLINE ✦
             </span>
           </div>
         </div>
 
         <!-- Columna 1: Para Quienes Buscan Camello -->
         <div>
-          <h4 class="font-headline text-sm font-bold text-white uppercase tracking-wider mb-4">
-            Candidatos
+          <h4 class="font-headline text-xs font-bold text-[#00f0ff] uppercase tracking-wider mb-4 font-mono">
+            [ 01_CANDIDATOS ]
           </h4>
           <ul class="space-y-2.5 text-xs text-neutral-400 font-body">
-            <li><a href="explorer.php" class="hover:text-white transition-colors">Explorar Vacantes</a></li>
-            <li><a href="explorer.php?modality=remoto" class="hover:text-white transition-colors">Trabajo 100% Remoto</a></li>
-            <li><a href="salary-calculator.php" class="hover:text-white transition-colors">Calculadora Salarial CST</a></li>
-            <li><a href="candidate-portal.php" class="hover:text-white transition-colors">Mi Panel de Camellos</a></li>
-            <li><a href="explorer.php?category=tech" class="hover:text-white transition-colors">Vacantes Tech & Software</a></li>
+            <li><a href="explorer.php" class="hover:text-[#00f0ff] transition-colors">Explorar Vacantes</a></li>
+            <li><a href="explorer.php?modality=remoto" class="hover:text-[#00f0ff] transition-colors">Trabajo 100% Remoto</a></li>
+            <li><a href="salary-calculator.php" class="hover:text-[#00f0ff] transition-colors">Calculadora Salarial CST</a></li>
+            <li><a href="candidate-portal.php" class="hover:text-[#00f0ff] transition-colors">Mi Panel de Camellos</a></li>
+            <li><a href="explorer.php?category=tech" class="hover:text-[#00f0ff] transition-colors">Vacantes Tech & Software</a></li>
           </ul>
         </div>
 
         <!-- Columna 2: Para Empresas & Reclutadores -->
         <div>
-          <h4 class="font-headline text-sm font-bold text-white uppercase tracking-wider mb-4">
-            Empresas
+          <h4 class="font-headline text-xs font-bold text-[#ff007f] uppercase tracking-wider mb-4 font-mono">
+            [ 02_EMPRESAS ]
           </h4>
           <ul class="space-y-2.5 text-xs text-neutral-400 font-body">
-            <li><a href="create-job.php" class="hover:text-white transition-colors">Publicar una Oferta</a></li>
-            <li><a href="recruiter.php" class="hover:text-white transition-colors">Panel Reclutador Enterprise</a></li>
-            <li><a href="company.php" class="hover:text-white transition-colors">Página de Empresa Verificada</a></li>
-            <li><a href="recruiter.php#copilot" class="hover:text-white transition-colors">Copiloto IA de Contratación</a></li>
-            <li><a href="setup_db.php" class="hover:text-white transition-colors text-[#ffb59d]">Sincronizar BD MySQL</a></li>
+            <li><a href="create-job.php" class="hover:text-[#ff007f] transition-colors">Publicar una Oferta</a></li>
+            <li><a href="recruiter.php" class="hover:text-[#ff007f] transition-colors">Panel Reclutador Enterprise</a></li>
+            <li><a href="company.php" class="hover:text-[#ff007f] transition-colors">Página de Empresa Verificada</a></li>
+            <li><a href="recruiter.php#copilot" class="hover:text-[#ff007f] transition-colors">Copiloto IA de Contratación</a></li>
+            <li><a href="setup_db.php" class="hover:text-[#00f0ff] transition-colors text-[#00f0ff]">Sincronizar BD MySQL</a></li>
           </ul>
         </div>
 
         <!-- Columna 3: Información & Legal -->
         <div>
-          <h4 class="font-headline text-sm font-bold text-white uppercase tracking-wider mb-4">
-            Comunidad LATAM
+          <h4 class="font-headline text-xs font-bold text-[#00ff88] uppercase tracking-wider mb-4 font-mono">
+            [ 03_RED_LATAM ]
           </h4>
           <p class="text-xs text-neutral-400 mb-3 leading-relaxed">
-            Hecho con orgullo y berraquera para conectar el talento colombiano con el mundo.
+            Conectando el talento más berraco y pilo de Colombia con oportunidades remotas globales.
           </p>
-          <div class="flex items-center gap-2 text-xs font-semibold text-neutral-300">
-            <span>🇨🇴 Colombia</span>
+          <div class="flex items-center gap-2 text-xs font-mono text-[#e2e8f0]">
+            <span>🇨🇴 COLOMBIA</span>
             <span>•</span>
             <span>🌎 LATAM</span>
             <span>•</span>
-            <span>⚡ Remoto</span>
+            <span class="text-[#00f0ff]">⚡ 2000</span>
           </div>
         </div>
 
       </div>
 
       <!-- Bottom Bar -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-        <p>© <?php echo date('Y'); ?> Échele Camello S.A.S. Todos los derechos reservados.</p>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
+        <p>© 2000-<?php echo date('Y'); ?> Échele Camello S.A.S. // Todos los derechos reservados.</p>
         <div class="flex items-center gap-6">
-          <a href="explorer.php" class="hover:text-neutral-300 transition-colors">Términos de Servicio</a>
-          <a href="salary-calculator.php" class="hover:text-neutral-300 transition-colors">Transparencia Salarial</a>
-          <a href="setup_db.php" class="hover:text-[#ca4a1c] transition-colors">Estado XAMPP / MySQL</a>
+          <a href="explorer.php" class="hover:text-[#00f0ff] transition-colors">Términos Cyber</a>
+          <a href="salary-calculator.php" class="hover:text-[#00f0ff] transition-colors">Transparencia CST</a>
+          <a href="setup_db.php" class="hover:text-[#ff007f] transition-colors">Estado XAMPP / MySQL</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL / DRAWER DE NOTIFICACIONES -->
-  <div id="notifications-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden animate-fade-in">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#e5e5e5] relative animate-scale-up">
-      <div class="flex items-center justify-between pb-3 border-b border-[#f0f0f0] mb-4">
+  <!-- MODAL / DRAWER DE NOTIFICACIONES Y2K -->
+  <div id="notifications-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md hidden animate-fade-in">
+    <div class="bg-[#120e26] rounded-3xl max-w-md w-full p-6 shadow-[0_0_40px_rgba(0,240,255,0.3)] border border-[#00f0ff]/40 relative animate-scale-up">
+      
+      <!-- Retro OS Window Bar -->
+      <div class="y2k-window-bar -mx-6 -mt-6 mb-4 rounded-t-3xl">
+        <div class="y2k-window-dots">
+          <div class="y2k-window-dot y2k-dot-red"></div>
+          <div class="y2k-window-dot y2k-dot-yellow"></div>
+          <div class="y2k-window-dot y2k-dot-green"></div>
+        </div>
+        <span>[ NOTIFICACIONES_SYSTEM_v2.0 ]</span>
+        <button onclick="toggleNotifications(false)" class="text-neutral-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
         <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-[#a83301]">notifications</span>
-          <h3 class="font-bold font-headline text-base text-[#1f1b16]">
+          <span class="material-symbols-outlined text-[#ff007f]">notifications_active</span>
+          <h3 class="font-bold font-headline text-base text-white">
             Notificaciones de Camello
           </h3>
         </div>
-        <button onclick="toggleNotifications(false)" class="w-8 h-8 rounded-full hover:bg-neutral-100 flex items-center justify-center text-[#737373] transition-colors">
-          <span class="material-symbols-outlined text-lg">close</span>
-        </button>
       </div>
 
       <div class="space-y-3 font-body text-xs mb-6">
-        <a href="candidate-portal.php" class="block p-3 rounded-xl bg-[#fff4f0] border border-[#ffdbd0] hover:border-[#a83301] transition-colors">
-          <p class="font-bold text-[#a83301] flex items-center gap-1">
+        <a href="candidate-portal.php" class="block p-3 rounded-2xl bg-[#ff007f]/10 border border-[#ff007f]/40 hover:border-[#ff007f] transition-colors">
+          <p class="font-bold text-[#ff007f] flex items-center gap-1 font-headline">
             <span class="material-symbols-outlined text-sm">workspace_premium</span>
             ¡Oferta formal de Stark Cloud Corp!
           </p>
-          <p class="text-[#525252] mt-0.5">
+          <p class="text-neutral-300 mt-0.5">
             USD $4,200 / mes lista para tu revisión y firma digital antes del viernes.
           </p>
-          <span class="text-[10px] text-[#737373] mt-1 block">Hace 2 horas</span>
+          <span class="text-[10px] text-[#00f0ff] font-mono mt-1 block">✦ HACE 2 HORAS</span>
         </a>
 
-        <a href="candidate-portal.php" class="block p-3 rounded-xl bg-neutral-50 border border-neutral-200 hover:border-[#0284c7] transition-colors">
-          <p class="font-bold text-[#1f1b16] flex items-center gap-1">
-            <span class="material-symbols-outlined text-sm text-[#0284c7]">video_call</span>
+        <a href="candidate-portal.php" class="block p-3 rounded-2xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 hover:border-[#00f0ff] transition-colors">
+          <p class="font-bold text-[#00f0ff] flex items-center gap-1 font-headline">
+            <span class="material-symbols-outlined text-sm">video_call</span>
             Entrevista agendada con Nubank
           </p>
-          <p class="text-[#525252] mt-0.5">
+          <p class="text-neutral-300 mt-0.5">
             Jueves 24 Oct, 3:00 PM (45 min) con Tomás Restrepo (VP Engineering).
           </p>
-          <span class="text-[10px] text-[#737373] mt-1 block">Ayer</span>
-        </a>
-
-        <a href="explorer.php" class="block p-3 rounded-xl bg-neutral-50 border border-neutral-200 hover:border-[#16a34a] transition-colors">
-          <p class="font-bold text-[#1f1b16] flex items-center gap-1">
-            <span class="material-symbols-outlined text-sm text-[#16a34a]">campaign</span>
-            8 nuevas vacantes en Tecnología
-          </p>
-          <p class="text-[#525252] mt-0.5">
-            Empresas verificadas han publicado vacantes 100% remotas acordes a tu perfil.
-          </p>
-          <span class="text-[10px] text-[#737373] mt-1 block">Hace 2 días</span>
+          <span class="text-[10px] text-[#00f0ff] font-mono mt-1 block">✦ AYER</span>
         </a>
       </div>
 
-      <button onclick="toggleNotifications(false)" class="w-full py-2.5 rounded-xl bg-neutral-100 hover:bg-neutral-200 text-xs font-bold text-[#1f1b16] transition-colors">
-        Cerrar
+      <button onclick="toggleNotifications(false)" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white transition-colors border border-white/20 font-mono">
+        [ CERRAR VENTANA ]
       </button>
     </div>
   </div>

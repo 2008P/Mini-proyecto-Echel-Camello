@@ -1,73 +1,244 @@
-/* Estilos personalizados para Échele Camello */
+/* ==============================================================
+   ESTILO DE DISEÑO Y2K - ÉCHELE CAMELLO (CYBER-RETRO 2000s)
+   Paleta: Chrome Metálico, Neón Cyan, Cyber Pink, Holográfico, Glassmorphism
+   ============================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
 
 :root {
-  --color-primary: #a83301;
-  --color-primary-container: #ca4a1c;
-  --color-primary-fixed: #ffdbd0;
-  --color-primary-fixed-dim: #ffb59d;
-  --color-surface: #fff8f5;
-  --color-surface-dim: #e1d8d3;
-  --color-surface-container: #f5ece7;
-  --color-on-surface: #1f1b18;
-  --color-on-surface-variant: #59413a;
-  --color-outline: #8d7168;
+  --y2k-bg: #090714;
+  --y2k-card-bg: rgba(18, 14, 38, 0.82);
+  --y2k-card-border: rgba(0, 240, 255, 0.22);
+  --y2k-pink: #ff007f;
+  --y2k-cyan: #00f0ff;
+  --y2k-purple: #8b5cf6;
+  --y2k-lime: #00ff88;
+  --y2k-silver: #e2e8f0;
+  --y2k-text: #f8fafc;
+  --y2k-text-muted: #94a3b8;
 }
 
+/* Background Cyber Grid de la era Y2K */
 body {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--color-surface, #fff8f5);
-  color: var(--color-on-surface, #1f1b18);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--y2k-bg, #090714) !important;
+  color: var(--y2k-text, #f8fafc) !important;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.25), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(255, 0, 127, 0.15), transparent),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0, 240, 255, 0.15), transparent),
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px !important;
+  background-attachment: fixed !important;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, .font-headline {
-  font-family: 'Outfit', sans-serif;
+/* Tipografía Y2K Futurista / Chrome */
+h1, h2, h3, h4, .font-headline {
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.02em;
 }
 
+/* Efecto Texto Metálico Chrome Y2K */
+.y2k-chrome-text, 
+h1:not(.no-chrome) {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 35%, #00F0FF 75%, #FFFFFF 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.35));
+}
+
+/* Sobrescritura de Contenedores y Secciones */
+section, main {
+  background: transparent !important;
+}
+
+/* Cards y Contenedores Y2K (Translucent Cyber Glass con borde iridiscente) */
+.bg-white,
+.bg-\[\#fff8f5\],
+.bg-\[\#fbf2ed\],
+.bg-\[\#fff8f6\],
+.bg-\[\#f5ece7\] {
+  background: var(--y2k-card-bg) !important;
+  border-color: var(--y2k-card-border) !important;
+  color: var(--y2k-text) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Tarjetas de Empleo y Artículos Y2K */
+article, 
+.border-\[\#e1bfb5\]\/40, 
+.border-\[\#e5e5e5\],
+.border-\[\#ffdbd0\],
+.border-\[\#f5b8a5\] {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  background: rgba(19, 14, 40, 0.85) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+article:hover {
+  border-color: var(--y2k-cyan) !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(255, 0, 127, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+/* Colores de Texto Adaptados para Modo Y2K */
+.text-\[\#1f1b18\],
+.text-\[\#1f1b16\],
+.text-black {
+  color: #ffffff !important;
+}
+
+.text-\[\#59413a\],
+.text-\[\#525252\],
+.text-\[\#737373\],
+.text-\[\#8d7168\] {
+  color: #94a3b8 !important;
+}
+
+/* Badges y Chips Y2K */
+.bg-\[\#f5ece7\],
+.bg-neutral-100,
+.bg-neutral-50,
+.bg-\[\#efe6e1\] {
+  background: rgba(30, 23, 60, 0.7) !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Salario y Resaltados en Neon Cyan / Fuchsia */
+.text-\[\#a83301\],
+.text-\[\#ca4a1c\] {
+  color: var(--y2k-cyan) !important;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.5) !important;
+}
+
+.bg-\[\#fff4f0\],
+.bg-\[\#ffdbd0\] {
+  background: rgba(255, 0, 127, 0.15) !important;
+  border-color: rgba(255, 0, 127, 0.4) !important;
+  color: #ff3399 !important;
+}
+
+/* Botones Y2K con Gradiente Neón Holográfico & Brillo */
+.bg-\[\#a83301\],
+.bg-\[\#ca4a1c\],
+button[type="submit"],
+.btn-y2k {
+  background: linear-gradient(135deg, #ff007f 0%, #7928ca 50%, #00f0ff 100%) !important;
+  color: #ffffff !important;
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.bg-\[\#a83301\]:hover,
+.bg-\[\#ca4a1c\]:hover,
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #00f0ff 0%, #7928ca 50%, #ff007f 100%) !important;
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  transform: scale(1.02);
+}
+
+/* Inputs y Selectores Y2K Cyber Deck */
+input, select, textarea {
+  background: rgba(14, 11, 30, 0.85) !important;
+  color: #ffffff !important;
+  border-color: rgba(0, 240, 255, 0.3) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--y2k-cyan) !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.5), inset 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+input::placeholder {
+  color: #64748b !important;
+}
+
+/* Navbar Y2K Cyber Glass Bar */
+header {
+  background: rgba(9, 7, 20, 0.88) !important;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.15) !important;
+}
+
+/* Footer Y2K */
+footer {
+  background: #05040a !important;
+  border-top: 1px solid rgba(0, 240, 255, 0.25) !important;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Material Symbols Neón Glow */
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  line-height: 1;
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }
 
-.material-symbols-filled {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-/* Custom scrollbars */
+/* Scrollbar Cyber Neón */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #090714;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(141, 113, 104, 0.25);
+  background: linear-gradient(180deg, var(--y2k-pink), var(--y2k-cyan));
   border-radius: 9999px;
+  border: 2px solid #090714;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(141, 113, 104, 0.45);
+  background: linear-gradient(180deg, var(--y2k-cyan), var(--y2k-pink));
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Starburst Glow Tag */
+.y2k-star {
+  display: inline-block;
+  color: var(--y2k-cyan);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+  animation: pulseStar 2s infinite ease-in-out;
 }
 
-@keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes pulseStar {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25) rotate(15deg); opacity: 0.7; }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.2s ease-out forwards;
+/* Ventanas estilo Retro Cyber OS */
+.y2k-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: linear-gradient(90deg, #1e173e 0%, #110d26 100%);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--y2k-cyan);
 }
 
-.animate-scale-up {
-  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.y2k-window-dots {
+  display: flex;
+  gap: 5px;
 }
+
+.y2k-window-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.y2k-dot-red { background: #ff3b30; }
+.y2k-dot-yellow { background: #ffcc00; }
+.y2k-dot-green { background: #34c759; }
