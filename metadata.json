@@ -1,0 +1,6 @@
+{
+  "name": "Échele Camello",
+  "description": "Ecosistema de movilidad laboral, remuneración transparente y empleo de alto impacto para Colombia y LATAM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
