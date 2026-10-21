@@ -6,7 +6,95 @@ export type AppScreen =
   | 'salary-calculator' 
   | 'candidate-portal' 
   | 'recruiter-dashboard' 
-  | 'create-job';
+  | 'create-job'
+  | 'requests'
+  | 'messages'
+  | 'notifications'
+  | 'login'
+  | 'register'
+  | 'recover-password';
+
+export type UserRole = 'CLIENTE' | 'TRABAJADOR' | 'ADMINISTRADOR';
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  status: 'PENDIENTE' | 'ACTIVO' | 'SUSPENDIDO';
+  avatar?: string;
+  phone?: string;
+  location?: string;
+  profession?: string;
+  ratingAvg?: number;
+  ratingCount?: number;
+}
+
+export type EstadoSolicitudEnum = 
+  | 'PENDIENTE' 
+  | 'ACEPTADA' 
+  | 'RECHAZADA' 
+  | 'PROGRAMADA' 
+  | 'EN_PROCESO' 
+  | 'FINALIZADA' 
+  | 'CANCELADA';
+
+export interface Solicitud {
+  id: string;
+  clienteId: string;
+  clienteNombre: string;
+  clienteAvatar?: string;
+  trabajadorId: string;
+  trabajadorNombre: string;
+  trabajadorAvatar?: string;
+  trabajadorProfesion?: string;
+  servicioId?: string;
+  titulo: string;
+  descripcion: string;
+  estado: EstadoSolicitudEnum;
+  fechaProgramada?: string;
+  direccion?: string;
+  valorPropuesto: number;
+  valorAcordado?: number;
+  motivoCancelacion?: string;
+  createdAt: string;
+}
+
+export interface Conversacion {
+  id: string;
+  clienteId: string;
+  clienteNombre: string;
+  clienteAvatar?: string;
+  trabajadorId: string;
+  trabajadorNombre: string;
+  trabajadorAvatar?: string;
+  solicitudId?: string;
+  ultimoMensaje?: string;
+  ultimoMensajeAt: string;
+  noLeidos?: number;
+}
+
+export interface Mensaje {
+  id: string;
+  conversacionId: string;
+  remitenteId: string;
+  contenido: string;
+  adjuntoUrl?: string;
+  adjuntoTipo?: 'image' | 'file';
+  leido: boolean;
+  createdAt: string;
+}
+
+export interface Notificacion {
+  id: string;
+  usuarioId: string;
+  titulo: string;
+  mensaje: string;
+  tipo: 'solicitud' | 'mensaje' | 'calificacion' | 'sistema';
+  enlace?: string;
+  leida: boolean;
+  createdAt: string;
+}
 
 export interface Job {
   id: string;

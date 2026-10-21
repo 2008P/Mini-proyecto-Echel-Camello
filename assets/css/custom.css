@@ -1,244 +1,278 @@
 /* ==============================================================
-   ESTILO DE DISEÑO Y2K - ÉCHELE CAMELLO (CYBER-RETRO 2000s)
-   Paleta: Chrome Metálico, Neón Cyan, Cyber Pink, Holográfico, Glassmorphism
+   DISEÑO PASTEL RELAJANTE Y PROFESIONAL - ÉCHELE CAMELLO
+   Paleta: Sage Suave, Crema Marfil, Melocotón Cálido, Lavanda Sereno y Pizarra Suave
    ============================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --y2k-bg: #090714;
-  --y2k-card-bg: rgba(18, 14, 38, 0.82);
-  --y2k-card-border: rgba(0, 240, 255, 0.22);
-  --y2k-pink: #ff007f;
-  --y2k-cyan: #00f0ff;
-  --y2k-purple: #8b5cf6;
-  --y2k-lime: #00ff88;
-  --y2k-silver: #e2e8f0;
-  --y2k-text: #f8fafc;
-  --y2k-text-muted: #94a3b8;
+  --pastel-bg: #FBF9F5;
+  --pastel-card: #FFFFFF;
+  --pastel-card-subtle: #F6F3EC;
+  --pastel-border: #E8E2D8;
+  --pastel-border-subtle: #F0EAE1;
+  
+  /* Sage (Verde Sabiduría / Profesional) */
+  --pastel-sage: #537A72;
+  --pastel-sage-btn: #6B9080;
+  --pastel-sage-hover: #5A7C6E;
+  --pastel-sage-light: #EAF4F4;
+  --pastel-sage-border: #CCE3DE;
+
+  /* Peach / Camel Cálido (Hospitalidad Colombiana) */
+  --pastel-peach: #A25844;
+  --pastel-peach-btn: #E79E78;
+  --pastel-peach-light: #FDF5F2;
+  --pastel-peach-border: #F9D6C9;
+
+  /* Lavender / Periwinkle (Creatividad & Foco) */
+  --pastel-lavender: #655B8B;
+  --pastel-lavender-light: #F2F4FB;
+  --pastel-lavender-border: #DCD4F0;
+
+  /* Sky Blue (Transparencia & Confianza) */
+  --pastel-sky: #3A6B88;
+  --pastel-sky-light: #EBF3F8;
+  --pastel-sky-border: #CFE2EE;
+
+  /* Butter / Honey (Éxito & Dinamismo) */
+  --pastel-butter: #8C7738;
+  --pastel-butter-light: #FEFAF0;
+  --pastel-butter-border: #FBEFBF;
+
+  /* Tipografía */
+  --pastel-text-title: #2C2724;
+  --pastel-text-body: #56504A;
+  --pastel-text-muted: #8C847C;
 }
 
-/* Background Cyber Grid de la era Y2K */
+/* Base Body: Fondo relajante cálido */
 body {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  background-color: var(--y2k-bg, #090714) !important;
-  color: var(--y2k-text, #f8fafc) !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--pastel-bg) !important;
+  color: var(--pastel-text-body) !important;
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.25), transparent),
-    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(255, 0, 127, 0.15), transparent),
-    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0, 240, 255, 0.15), transparent),
-    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px) !important;
-  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px !important;
+    radial-gradient(circle at 10% 20%, rgba(234, 244, 244, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(253, 245, 242, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(242, 244, 251, 0.4) 0%, transparent 50%) !important;
   background-attachment: fixed !important;
-  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Tipografía Y2K Futurista / Chrome */
-h1, h2, h3, h4, .font-headline {
-  font-family: 'Orbitron', 'Space Grotesk', sans-serif !important;
-  letter-spacing: -0.02em;
+/* Tipografía de Títulos: Outfit elegante y legible */
+h1, h2, h3, h4, h5, h6, .font-headline {
+  font-family: 'Outfit', sans-serif !important;
+  color: var(--pastel-text-title) !important;
+  letter-spacing: -0.015em;
+  font-weight: 700;
 }
 
-/* Efecto Texto Metálico Chrome Y2K */
-.y2k-chrome-text, 
-h1:not(.no-chrome) {
-  background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 35%, #00F0FF 75%, #FFFFFF 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.35));
+/* Títulos principales limpios */
+h1 {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: var(--pastel-text-title) !important;
+  filter: none !important;
 }
 
-/* Sobrescritura de Contenedores y Secciones */
-section, main {
-  background: transparent !important;
-}
-
-/* Cards y Contenedores Y2K (Translucent Cyber Glass con borde iridiscente) */
-.bg-white,
-.bg-\[\#fff8f5\],
-.bg-\[\#fbf2ed\],
-.bg-\[\#fff8f6\],
-.bg-\[\#f5ece7\] {
-  background: var(--y2k-card-bg) !important;
-  border-color: var(--y2k-card-border) !important;
-  color: var(--y2k-text) !important;
+/* Header & Barra de Navegación Pastel */
+header {
+  background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12) !important;
+  border-bottom: 1px solid var(--pastel-border) !important;
+  box-shadow: 0 4px 20px rgba(44, 39, 36, 0.03) !important;
 }
 
-/* Tarjetas de Empleo y Artículos Y2K */
-article, 
-.border-\[\#e1bfb5\]\/40, 
-.border-\[\#e5e5e5\],
-.border-\[\#ffdbd0\],
-.border-\[\#f5b8a5\] {
-  border-color: rgba(0, 240, 255, 0.25) !important;
-  background: rgba(19, 14, 40, 0.85) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+/* Contenedores y Tarjetas Pastel con sombra suave */
+.bg-white,
+article,
+.pastel-card {
+  background: #ffffff !important;
+  border: 1px solid var(--pastel-border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px -4px rgba(44, 39, 36, 0.04), 0 2px 6px -1px rgba(44, 39, 36, 0.02) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-article:hover {
-  border-color: var(--y2k-cyan) !important;
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(255, 0, 127, 0.15) !important;
-  transform: translateY(-2px);
+article:hover,
+.pastel-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--pastel-sage-border) !important;
+  box-shadow: 0 14px 34px -4px rgba(107, 144, 128, 0.12), 0 4px 10px -2px rgba(44, 39, 36, 0.04) !important;
 }
 
-/* Colores de Texto Adaptados para Modo Y2K */
+/* Botones Principales con estética Pastel Profesional */
+.bg-\[\#a83301\],
+.bg-\[\#ca4a1c\],
+button[type="submit"],
+.btn-pastel-primary {
+  background: var(--pastel-sage-btn) !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 14px rgba(107, 144, 128, 0.32) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.bg-\[\#a83301\]:hover,
+.bg-\[\#ca4a1c\]:hover,
+button[type="submit"]:hover,
+.btn-pastel-primary:hover {
+  background: var(--pastel-sage-hover) !important;
+  box-shadow: 0 6px 20px rgba(107, 144, 128, 0.42) !important;
+  transform: translateY(-1px);
+}
+
+/* Botón secundario melocotón cálido */
+.btn-pastel-secondary {
+  background: var(--pastel-peach-light) !important;
+  color: var(--pastel-peach) !important;
+  border: 1px solid var(--pastel-peach-border) !important;
+  border-radius: 14px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-pastel-secondary:hover {
+  background: #faece7 !important;
+  transform: translateY(-1px);
+}
+
+/* Salarios y precios con tono sage relajante */
+.text-\[\#a83301\],
+.text-\[\#ca4a1c\],
+.pastel-salary {
+  color: var(--pastel-sage) !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* Badges y Chips en tonos Pastel Suaves */
+.bg-\[\#f5ece7\],
+.bg-neutral-100,
+.bg-neutral-50,
+.bg-\[\#efe6e1\] {
+  background: var(--pastel-card-subtle) !important;
+  color: var(--pastel-text-title) !important;
+  border: 1px solid var(--pastel-border-subtle) !important;
+  border-radius: 99px !important;
+}
+
+.bg-\[\#fff4f0\],
+.bg-\[\#ffdbd0\] {
+  background: var(--pastel-peach-light) !important;
+  color: var(--pastel-peach) !important;
+  border: 1px solid var(--pastel-peach-border) !important;
+  border-radius: 99px !important;
+}
+
+/* Colores de texto refinados */
 .text-\[\#1f1b18\],
 .text-\[\#1f1b16\],
 .text-black {
-  color: #ffffff !important;
+  color: var(--pastel-text-title) !important;
 }
 
 .text-\[\#59413a\],
 .text-\[\#525252\],
 .text-\[\#737373\],
 .text-\[\#8d7168\] {
-  color: #94a3b8 !important;
+  color: var(--pastel-text-body) !important;
 }
 
-/* Badges y Chips Y2K */
-.bg-\[\#f5ece7\],
-.bg-neutral-100,
-.bg-neutral-50,
-.bg-\[\#efe6e1\] {
-  background: rgba(30, 23, 60, 0.7) !important;
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Salario y Resaltados en Neon Cyan / Fuchsia */
-.text-\[\#a83301\],
-.text-\[\#ca4a1c\] {
-  color: var(--y2k-cyan) !important;
-  text-shadow: 0 0 12px rgba(0, 240, 255, 0.5) !important;
-}
-
-.bg-\[\#fff4f0\],
-.bg-\[\#ffdbd0\] {
-  background: rgba(255, 0, 127, 0.15) !important;
-  border-color: rgba(255, 0, 127, 0.4) !important;
-  color: #ff3399 !important;
-}
-
-/* Botones Y2K con Gradiente Neón Holográfico & Brillo */
-.bg-\[\#a83301\],
-.bg-\[\#ca4a1c\],
-button[type="submit"],
-.btn-y2k {
-  background: linear-gradient(135deg, #ff007f 0%, #7928ca 50%, #00f0ff 100%) !important;
-  color: #ffffff !important;
-  font-family: 'Orbitron', 'Space Grotesk', sans-serif !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.bg-\[\#a83301\]:hover,
-.bg-\[\#ca4a1c\]:hover,
-button[type="submit"]:hover {
-  background: linear-gradient(135deg, #00f0ff 0%, #7928ca 50%, #ff007f 100%) !important;
-  box-shadow: 0 0 30px rgba(255, 0, 127, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  transform: scale(1.02);
-}
-
-/* Inputs y Selectores Y2K Cyber Deck */
+/* Inputs, Textareas y Selects con bordes pastel */
 input, select, textarea {
-  background: rgba(14, 11, 30, 0.85) !important;
-  color: #ffffff !important;
-  border-color: rgba(0, 240, 255, 0.3) !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  background: #ffffff !important;
+  color: var(--pastel-text-title) !important;
+  border: 1.5px solid var(--pastel-border) !important;
+  border-radius: 14px !important;
+  padding: 10px 14px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  box-shadow: 0 1px 2px rgba(44, 39, 36, 0.04) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: var(--y2k-cyan) !important;
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.5), inset 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  border-color: var(--pastel-sage) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(107, 144, 128, 0.18) !important;
 }
 
-input::placeholder {
-  color: #64748b !important;
+input::placeholder, textarea::placeholder {
+  color: var(--pastel-text-muted) !important;
 }
 
-/* Navbar Y2K Cyber Glass Bar */
-header {
-  background: rgba(9, 7, 20, 0.88) !important;
-  border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.15) !important;
-}
-
-/* Footer Y2K */
+/* Footer Limpio y Relajante */
 footer {
-  background: #05040a !important;
-  border-top: 1px solid rgba(0, 240, 255, 0.25) !important;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8) !important;
+  background: #F4EFEB !important;
+  color: var(--pastel-text-body) !important;
+  border-top: 1px solid var(--pastel-border) !important;
+  box-shadow: none !important;
 }
 
-/* Material Symbols Neón Glow */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+footer h4 {
+  color: var(--pastel-text-title) !important;
 }
 
-/* Scrollbar Cyber Neón */
+footer a {
+  color: var(--pastel-text-body) !important;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--pastel-sage) !important;
+}
+
+/* Scrollbar Pastel Suave */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #090714;
+  background: var(--pastel-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--y2k-pink), var(--y2k-cyan));
-  border-radius: 9999px;
-  border: 2px solid #090714;
+  background: #D8D0C4;
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--y2k-cyan), var(--y2k-pink));
+  background: #B8AE9E;
 }
 
-/* Starburst Glow Tag */
-.y2k-star {
-  display: inline-block;
-  color: var(--y2k-cyan);
-  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
-  animation: pulseStar 2s infinite ease-in-out;
+/* Status Badges para el Ciclo de Vida State */
+.badge-estado-pendiente {
+  background: var(--pastel-butter-light);
+  color: var(--pastel-butter);
+  border: 1px solid var(--pastel-butter-border);
 }
-
-@keyframes pulseStar {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.25) rotate(15deg); opacity: 0.7; }
+.badge-estado-aceptada {
+  background: var(--pastel-sky-light);
+  color: var(--pastel-sky);
+  border: 1px solid var(--pastel-sky-border);
 }
-
-/* Ventanas estilo Retro Cyber OS */
-.y2k-window-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 12px;
-  background: linear-gradient(90deg, #1e173e 0%, #110d26 100%);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
-  font-family: 'Orbitron', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--y2k-cyan);
+.badge-estado-programada {
+  background: var(--pastel-lavender-light);
+  color: var(--pastel-lavender);
+  border: 1px solid var(--pastel-lavender-border);
 }
-
-.y2k-window-dots {
-  display: flex;
-  gap: 5px;
+.badge-estado-en_proceso {
+  background: var(--pastel-peach-light);
+  color: var(--pastel-peach);
+  border: 1px solid var(--pastel-peach-border);
 }
-
-.y2k-window-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.badge-estado-finalizada {
+  background: var(--pastel-sage-light);
+  color: var(--pastel-sage);
+  border: 1px solid var(--pastel-sage-border);
 }
-.y2k-dot-red { background: #ff3b30; }
-.y2k-dot-yellow { background: #ffcc00; }
-.y2k-dot-green { background: #34c759; }
+.badge-estado-rechazada,
+.badge-estado-cancelada {
+  background: #FDF0F0;
+  color: #B94A48;
+  border: 1px solid #F5C6CB;
+}

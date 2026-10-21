@@ -66,15 +66,20 @@ if ($salaryFilter === 'cop-2-5') {
     $sql .= " AND j.currency = 'USD'";
 }
 
-if ($sort === 'salary') {
-    $sql .= " ORDER BY j.salary_max DESC, j.created_at DESC";
-} else {
-    $sql .= " ORDER BY j.created_at DESC";
-}
-
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
-$jobs = $stmt->fetchAll();
+$rawJobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Aplicar Patrón Strategy para ordenamiento determinista (05_PATRONES - Sección 7)
+use EcheleCamello\Patterns\Strategy\BusquedaContext;
+$buscador = new BusquedaContext();
+$estrategia = BusquedaContext::resolverEstrategia($sort);
+$buscador->setEstrategia($estrategia);
+
+$jobs = $buscador->ejecutar($rawJobs, [
+    'user_lat' => 4.7110, // Coordenadas de referencia Bogotá (Haversine)
+    'user_lng' => -74.0721
+]);
 $totalResults = count($jobs);
 ?>
 
@@ -149,8 +154,10 @@ $totalResults = count($jobs);
                 Ordenar por
               </label>
               <select name="sort" class="w-full bg-transparent text-sm text-[#1f1b18] font-medium focus:outline-none cursor-pointer">
-                <option value="recent" <?php echo $sort === 'recent' ? 'selected' : ''; ?>>Más recientes</option>
-                <option value="salary" <?php echo $sort === 'salary' ? 'selected' : ''; ?>>Mayor salario</option>
+                <option value="recent" <?php echo $sort === 'recent' ? 'selected' : ''; ?>>Más recientes (Strategy)</option>
+                <option value="salary" <?php echo $sort === 'salary' ? 'selected' : ''; ?>>Mayor salario (Strategy)</option>
+                <option value="cercania" <?php echo $sort === 'cercania' ? 'selected' : ''; ?>>Cercanía Haversine (Strategy)</option>
+                <option value="calificacion" <?php echo $sort === 'calificacion' ? 'selected' : ''; ?>>Mejor calificación (Strategy)</option>
               </select>
             </div>
           </div>

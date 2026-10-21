@@ -54,83 +54,83 @@ $totalJobsCount = $pdo->query("SELECT COUNT(*) FROM jobs")->fetchColumn();
         </div>
       </div>
 
-      <!-- Main Headline Y2K -->
-      <h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl text-white max-w-4xl tracking-tight leading-[1.15] font-black uppercase">
-        ✦ ¡Échele Camello 2000! ✦ <br class="hidden sm:inline" />
-        <span class="text-[#00f0ff] font-extrabold italic">El trabajo del futuro</span> está aquí.
+      <!-- Main Headline Pastel -->
+      <h1 class="font-headline text-4xl sm:text-5xl lg:text-6xl text-[#2C2724] max-w-4xl tracking-tight leading-[1.15] font-bold">
+        El Ecosistema de Talento y <br class="hidden sm:inline" />
+        <span class="text-[#537A72] italic font-extrabold">Salarios Claros</span> en Colombia.
       </h1>
 
-      <p class="mt-4 text-base sm:text-lg text-neutral-300 max-w-2xl font-body">
-        Conectamos al talento más “pilo”, trabajador y berraco con las mejores empresas de Colombia y oportunidades remotas globales con remuneración justa.
+      <p class="mt-4 text-base sm:text-lg text-[#645D56] max-w-2xl font-body">
+        Conectamos a profesionales y trabajadores con empresas verificadas y clientes directos. Cero ofertas fantasma, salarios transparentes y acuerdos seguros.
       </p>
 
-      <!-- Unified Level-3 Search Console with Retro OS Header -->
-      <div class="w-full max-w-5xl mt-8 rounded-3xl shadow-[0_0_35px_rgba(0,240,255,0.25)] overflow-hidden text-left p-3 sm:p-4 border border-[#00f0ff]/40 bg-[#120e26]/85 backdrop-blur-xl relative">
-        <div class="y2k-window-bar -mx-3 -mt-3 sm:-mx-4 sm:-mt-4 mb-4 rounded-t-3xl">
-          <div class="y2k-window-dots">
-            <div class="y2k-window-dot y2k-dot-red"></div>
-            <div class="y2k-window-dot y2k-dot-yellow"></div>
-            <div class="y2k-window-dot y2k-dot-green"></div>
+      <!-- Unified Level-3 Search Console Pastel -->
+      <div class="w-full max-w-5xl mt-8 rounded-3xl shadow-[0_12px_40px_rgba(44,39,36,0.06)] overflow-hidden text-left p-4 sm:p-5 border border-[#E8E2D8] bg-white relative">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#F0EAE1]">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#6B9080]"></span>
+            <span class="text-xs font-bold text-[#2C2724] uppercase tracking-wider font-headline">Buscador Inteligente de Oportunidades</span>
           </div>
-          <span>[ SEARCH_CONSOLE // TALENTO_LATAM_v2.0 ]</span>
-          <span class="text-[#ff007f] font-mono">● LIVE</span>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#EAF4F4] text-[#537A72] border border-[#CCE3DE]">
+            Patrón Strategy Activo
+          </span>
         </div>
         
         <form action="explorer.php" method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-3 items-center">
           
           <!-- Keyword Zone -->
-          <div class="md:col-span-4 flex items-center gap-2.5 px-3 py-2.5 bg-[#090714]/80 rounded-xl border border-[#00f0ff]/30 focus-within:border-[#00f0ff] focus-within:shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all">
-            <span class="material-symbols-outlined text-[#00f0ff] text-[22px]">search</span>
+          <div class="md:col-span-4 flex items-center gap-2.5 px-3 py-2.5 bg-[#FBF9F5] rounded-xl border border-[#E8E2D8] focus-within:border-[#6B9080] focus-within:ring-2 focus-within:ring-[#6B9080]/15 transition-all">
+            <span class="material-symbols-outlined text-[#537A72] text-[22px]">search</span>
             <div class="flex flex-col w-full min-w-0">
-              <label class="text-[9px] text-[#00f0ff] font-mono uppercase tracking-wider font-bold">
+              <label class="text-[9px] text-[#8C847C] uppercase tracking-wider font-bold">
                 Cargo o palabra clave
               </label>
               <input
                 type="text"
                 name="q"
-                placeholder="Ej: Frontend, Asesor, Ventas, Java..."
-                class="w-full bg-transparent text-sm text-white font-medium placeholder:text-neutral-500 focus:outline-none truncate"
+                placeholder="Ej: Frontend, Asesor, Electricista..."
+                class="w-full bg-transparent text-sm text-[#2C2724] font-medium placeholder:text-[#8C847C] focus:outline-none truncate"
               />
             </div>
           </div>
 
           <!-- Location Zone -->
-          <div class="md:col-span-3 flex items-center gap-2.5 px-3 py-2.5 bg-[#090714]/80 rounded-xl border border-[#00f0ff]/30 focus-within:border-[#00f0ff] focus-within:shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all">
-            <span class="material-symbols-outlined text-[#ff007f] text-[22px]">location_on</span>
+          <div class="md:col-span-3 flex items-center gap-2.5 px-3 py-2.5 bg-[#FBF9F5] rounded-xl border border-[#E8E2D8] focus-within:border-[#6B9080] focus-within:ring-2 focus-within:ring-[#6B9080]/15 transition-all">
+            <span class="material-symbols-outlined text-[#E79E78] text-[22px]">location_on</span>
             <div class="flex flex-col w-full min-w-0">
-              <label class="text-[9px] text-[#ff007f] font-mono uppercase tracking-wider font-bold">
+              <label class="text-[9px] text-[#8C847C] uppercase tracking-wider font-bold">
                 Ubicación
               </label>
               <select
                 name="location"
-                class="w-full bg-transparent text-sm text-white font-medium focus:outline-none cursor-pointer"
+                class="w-full bg-transparent text-sm text-[#2C2724] font-medium focus:outline-none cursor-pointer"
               >
-                <option value="all" class="bg-[#090714] text-white">Todas las ubicaciones</option>
-                <option value="remoto" class="bg-[#090714] text-white">100% Remoto (Global/LATAM)</option>
-                <option value="bogota" class="bg-[#090714] text-white">Bogotá, D.C.</option>
-                <option value="medellin" class="bg-[#090714] text-white">Medellín, Antioquia</option>
-                <option value="cali" class="bg-[#090714] text-white">Cali, Valle</option>
-                <option value="barranquilla" class="bg-[#090714] text-white">Barranquilla, Atlántico</option>
+                <option value="all">Todas las ubicaciones</option>
+                <option value="remoto">100% Remoto (Global/LATAM)</option>
+                <option value="bogota">Bogotá, D.C.</option>
+                <option value="medellin">Medellín, Antioquia</option>
+                <option value="cali">Cali, Valle</option>
+                <option value="barranquilla">Barranquilla, Atlántico</option>
               </select>
             </div>
           </div>
 
           <!-- Salary Category Zone -->
-          <div class="md:col-span-3 flex items-center gap-2.5 px-3 py-2.5 bg-[#090714]/80 rounded-xl border border-[#00f0ff]/30 focus-within:border-[#00f0ff] focus-within:shadow-[0_0_12px_rgba(0,240,255,0.4)] transition-all">
-            <span class="material-symbols-outlined text-[#00ff88] text-[22px]">payments</span>
+          <div class="md:col-span-3 flex items-center gap-2.5 px-3 py-2.5 bg-[#FBF9F5] rounded-xl border border-[#E8E2D8] focus-within:border-[#6B9080] focus-within:ring-2 focus-within:ring-[#6B9080]/15 transition-all">
+            <span class="material-symbols-outlined text-[#655B8B] text-[22px]">payments</span>
             <div class="flex flex-col w-full min-w-0">
-              <label class="text-[9px] text-[#00ff88] font-mono uppercase tracking-wider font-bold">
+              <label class="text-[9px] text-[#8C847C] uppercase tracking-wider font-bold">
                 Rango Salarial
               </label>
               <select
                 name="salary"
-                class="w-full bg-transparent text-sm text-white font-medium focus:outline-none cursor-pointer"
+                class="w-full bg-transparent text-sm text-[#2C2724] font-medium focus:outline-none cursor-pointer"
               >
-                <option value="all" class="bg-[#090714] text-white">Cualquier salario</option>
-                <option value="cop-2-5" class="bg-[#090714] text-white">COP $2.5M - $5M</option>
-                <option value="cop-5-10" class="bg-[#090714] text-white">COP $5M - $10M</option>
-                <option value="cop-10m" class="bg-[#090714] text-white">COP +$10M COP</option>
-                <option value="usd" class="bg-[#090714] text-white">En Dólares (USD)</option>
+                <option value="all">Cualquier salario</option>
+                <option value="cop-2-5">COP $2.5M - $5M</option>
+                <option value="cop-5-10">COP $5M - $10M</option>
+                <option value="cop-10m">COP +$10M COP</option>
+                <option value="usd">En Dólares (USD)</option>
               </select>
             </div>
           </div>
@@ -139,10 +139,10 @@ $totalJobsCount = $pdo->query("SELECT COUNT(*) FROM jobs")->fetchColumn();
           <div class="md:col-span-2">
             <button
               type="submit"
-              class="w-full h-[52px] flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff007f] via-[#7928ca] to-[#00f0ff] text-white font-headline text-sm font-bold shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(255,0,127,0.6)] border border-white/30 transition-all active:scale-95 cursor-pointer uppercase font-mono"
+              class="w-full h-[52px] flex items-center justify-center gap-2 rounded-xl bg-[#6B9080] hover:bg-[#5A7C6E] text-white font-headline text-sm font-bold shadow-[0_4px_14px_rgba(107,144,128,0.3)] transition-all active:scale-95 cursor-pointer"
             >
-              <span>Camellar</span>
-              <span class="material-symbols-outlined text-[18px]">bolt</span>
+              <span>Explorar</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
             </button>
           </div>
         </form>
@@ -169,41 +169,41 @@ $totalJobsCount = $pdo->query("SELECT COUNT(*) FROM jobs")->fetchColumn();
         </a>
       </div>
 
-      <!-- Real-time Live Counters Y2K -->
+      <!-- Real-time Live Counters Pastel -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl mt-12 pt-6">
-        <div class="flex items-center gap-4 p-4 rounded-2xl border border-[#00f0ff]/30 text-left bg-[#120e26]/70 shadow-[0_0_20px_rgba(0,240,255,0.15)]">
-          <div class="w-12 h-12 rounded-xl bg-[#00f0ff]/20 flex items-center justify-center text-[#00f0ff] border border-[#00f0ff]/40 shadow-[0_0_12px_rgba(0,240,255,0.4)]">
-            <span class="material-symbols-outlined text-[26px]">terminal</span>
+        <div class="flex items-center gap-4 p-4 rounded-2xl border border-[#CCE3DE] text-left bg-[#EAF4F4] shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#537A72] border border-[#CCE3DE] shadow-xs">
+            <span class="material-symbols-outlined text-[26px]">work</span>
           </div>
           <div>
-            <span class="font-headline text-2xl font-black text-[#00f0ff] block leading-none drop-shadow-[0_0_10px_rgba(0,240,255,0.6)]">
+            <span class="font-headline text-2xl font-bold text-[#2C2724] block leading-none">
               +18,540
             </span>
-            <span class="text-xs text-neutral-400 mt-1 block font-mono">✦ Vacantes verificadas activas</span>
+            <span class="text-xs text-[#645D56] mt-1 block">Vacantes verificadas activas</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-4 p-4 rounded-2xl border border-[#00ff88]/30 text-left bg-[#120e26]/70 shadow-[0_0_20px_rgba(0,255,136,0.15)]">
-          <div class="w-12 h-12 rounded-xl bg-[#00ff88]/20 flex items-center justify-center text-[#00ff88] border border-[#00ff88]/40 shadow-[0_0_12px_rgba(0,255,136,0.4)]">
+        <div class="flex items-center gap-4 p-4 rounded-2xl border border-[#CFE2EE] text-left bg-[#EBF3F8] shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#3A6B88] border border-[#CFE2EE] shadow-xs">
             <span class="material-symbols-outlined text-[26px]">verified</span>
           </div>
           <div>
-            <span class="font-headline text-2xl font-black text-[#00ff88] block leading-none drop-shadow-[0_0_10px_rgba(0,255,136,0.6)]">
+            <span class="font-headline text-2xl font-bold text-[#2C2724] block leading-none">
               94.2%
             </span>
-            <span class="text-xs text-neutral-400 mt-1 block font-mono">✦ Tasa de respuesta directa</span>
+            <span class="text-xs text-[#645D56] mt-1 block">Tasa de respuesta directa</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-4 p-4 rounded-2xl border border-[#ff007f]/30 text-left bg-[#120e26]/70 shadow-[0_0_20px_rgba(255,0,127,0.15)]">
-          <div class="w-12 h-12 rounded-xl bg-[#ff007f]/20 flex items-center justify-center text-[#ff007f] border border-[#ff007f]/40 shadow-[0_0_12px_rgba(255,0,127,0.4)]">
+        <div class="flex items-center gap-4 p-4 rounded-2xl border border-[#F9D6C9] text-left bg-[#FDF5F2] shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#A25844] border border-[#F9D6C9] shadow-xs">
             <span class="material-symbols-outlined text-[26px]">corporate_fare</span>
           </div>
           <div>
-            <span class="font-headline text-2xl font-black text-[#ff007f] block leading-none drop-shadow-[0_0_10px_rgba(255,0,127,0.6)]">
+            <span class="font-headline text-2xl font-bold text-[#2C2724] block leading-none">
               +3,200
             </span>
-            <span class="text-xs text-neutral-400 mt-1 block font-mono">✦ Empresas contratando ya</span>
+            <span class="text-xs text-[#645D56] mt-1 block">Empresas contratando ya</span>
           </div>
         </div>
       </div>

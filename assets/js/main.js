@@ -95,10 +95,10 @@ function showToast(message) {
     if (!toast) {
         toast = document.createElement('div');
         toast.id = 'global-toast';
-        toast.className = 'fixed bottom-6 right-6 z-50 bg-[#1f1b18] text-white px-5 py-3 rounded-2xl shadow-2xl border border-neutral-700 text-sm font-semibold flex items-center gap-3 animate-scale-up';
+        toast.className = 'fixed bottom-6 right-6 z-50 bg-white text-[#2C2724] px-5 py-3 rounded-2xl shadow-xl border border-[#CCE3DE] text-sm font-semibold flex items-center gap-3 animate-scale-up';
         document.body.appendChild(toast);
     }
-    toast.innerHTML = `<span class="material-symbols-outlined text-[#16a34a]">check_circle</span> <span>${message}</span>`;
+    toast.innerHTML = `<span class="material-symbols-outlined text-[#6B9080]">check_circle</span> <span>${message}</span>`;
     toast.classList.remove('hidden');
 
     setTimeout(() => {

@@ -228,3 +228,175 @@ INSERT IGNORE INTO `saved_jobs` (`job_id`) VALUES
 ('stark-frontend-senior'),
 ('nubank-fullstack-lead'),
 ('coordinadora-lead-designer');
+
+-- ==============================================================
+-- DOMINIO: USUARIOS Y ROLES (05_PATRONES - RF-01 al 08)
+-- ==============================================================
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `name` VARCHAR(150) NOT NULL,
+  `email` VARCHAR(150) NOT NULL UNIQUE,
+  `password_hash` VARCHAR(255) NOT NULL,
+  `role` ENUM('CLIENTE', 'TRABAJADOR', 'ADMINISTRADOR') NOT NULL DEFAULT 'CLIENTE',
+  `status` ENUM('PENDIENTE', 'ACTIVO', 'SUSPENDIDO') NOT NULL DEFAULT 'ACTIVO',
+  `avatar` TEXT,
+  `phone` VARCHAR(50),
+  `location` VARCHAR(150),
+  `profession` VARCHAR(150),
+  `rating_avg` DECIMAL(3,2) DEFAULT 5.00,
+  `rating_count` INT DEFAULT 0,
+  `verification_token` VARCHAR(100),
+  `recovery_token` VARCHAR(100),
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ==============================================================
+-- DOMINIO: SOLICITUDES Y AGENDAMIENTO (05_PATRONES - State Pattern)
+-- Ciclo: PENDIENTE -> ACEPTADA/RECHAZADA -> PROGRAMADA -> EN_PROCESO -> FINALIZADA / CANCELADA
+-- ==============================================================
+CREATE TABLE IF NOT EXISTS `solicitudes` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `cliente_id` VARCHAR(50) NOT NULL,
+  `trabajador_id` VARCHAR(50) NOT NULL,
+  `servicio_id` VARCHAR(100),
+  `titulo` VARCHAR(255) NOT NULL,
+  `descripcion` TEXT NOT NULL,
+  `estado` ENUM('PENDIENTE', 'ACEPTADA', 'RECHAZADA', 'PROGRAMADA', 'EN_PROCESO', 'FINALIZADA', 'CANCELADA') NOT NULL DEFAULT 'PENDIENTE',
+  `fecha_programada` DATETIME NULL,
+  `direccion` VARCHAR(255) NULL,
+  `valor_propuesto` DECIMAL(12,2) DEFAULT 0,
+  `valor_acordado` DECIMAL(12,2) DEFAULT 0,
+  `motivo_cancelacion` TEXT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ==============================================================
+-- DOMINIO: COMUNICACIÓN Y MENSAJERÍA (05_PATRONES - RF-41 al 46)
+-- ==============================================================
+CREATE TABLE IF NOT EXISTS `conversaciones` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `cliente_id` VARCHAR(50) NOT NULL,
+  `trabajador_id` VARCHAR(50) NOT NULL,
+  `solicitud_id` VARCHAR(50) NULL,
+  `ultimo_mensaje` TEXT NULL,
+  `ultimo_mensaje_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `mensajes` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `conversacion_id` VARCHAR(50) NOT NULL,
+  `remitente_id` VARCHAR(50) NOT NULL,
+  `contenido` TEXT NOT NULL,
+  `adjunto_url` TEXT NULL,
+  `adjunto_tipo` VARCHAR(50) NULL,
+  `leido` TINYINT(1) DEFAULT 0,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ==============================================================
+-- DOMINIO: NOTIFICACIONES (05_PATRONES - Observer / PubSub)
+-- ==============================================================
+CREATE TABLE IF NOT EXISTS `notificaciones` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `usuario_id` VARCHAR(50) NOT NULL,
+  `titulo` VARCHAR(200) NOT NULL,
+  `mensaje` TEXT NOT NULL,
+  `tipo` ENUM('solicitud', 'mensaje', 'calificacion', 'sistema') DEFAULT 'sistema',
+  `enlace` VARCHAR(255) NULL,
+  `leida` TINYINT(1) DEFAULT 0,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ==============================================================
+-- DOMINIO: REPUTACIÓN Y VALORACIONES (05_PATRONES - RF-47 al 51)
+-- ==============================================================
+CREATE TABLE IF NOT EXISTS `calificaciones` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `solicitud_id` VARCHAR(50) NOT NULL UNIQUE,
+  `cliente_id` VARCHAR(50) NOT NULL,
+  `trabajador_id` VARCHAR(50) NOT NULL,
+  `puntuacion` TINYINT NOT NULL,
+  `comentario` TEXT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ==============================================================
+-- DOMINIO: MODERACIÓN Y REPORTES (05_PATRONES - State en Reportes)
+-- ==============================================================
+CREATE TABLE IF NOT EXISTS `reportes` (
+  `id` VARCHAR(50) NOT NULL PRIMARY KEY,
+  `reportante_id` VARCHAR(50) NOT NULL,
+  `tipo_entidad` ENUM('servicio', 'usuario', 'solicitud') NOT NULL,
+  `entidad_id` VARCHAR(100) NOT NULL,
+  `motivo` TEXT NOT NULL,
+  `estado` ENUM('ABIERTO', 'EN_REVISION', 'RESUELTO', 'DESCARTADO') NOT NULL DEFAULT 'ABIERTO',
+  `resolucion` TEXT NULL,
+  `moderador_id` VARCHAR(50) NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ==============================================================
+-- DATOS SEED PARA USUARIOS DE PRUEBA
+-- Password para todos: "Camello2026*" (hash bcrypt)
+-- ==============================================================
+INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`, `status`, `avatar`, `phone`, `location`, `profession`, `rating_avg`, `rating_count`) VALUES
+('usr-cliente-1', 'Camila Ramos', 'camila.ramos@empresa.com', '$2y$10$eO1vV5lI7vR9sJ9x6kQvU.oKqWqW5Z3F4sR5T6U7V8W9X0Y1Z2a3b', 'CLIENTE', 'ACTIVO', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80', '+57 301 234 5678', 'Bogotá D.C., Colombia', 'Gerente de Proyectos & Contratación', 5.00, 8),
+('usr-trabajador-1', 'Camilo Restrepo', 'camilo.restrepo@echelecamello.co', '$2y$10$eO1vV5lI7vR9sJ9x6kQvU.oKqWqW5Z3F4sR5T6U7V8W9X0Y1Z2a3b', 'TRABAJADOR', 'ACTIVO', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', '+57 312 456 7890', 'Medellín, Antioquia', 'Desarrollador Fullstack & Consultor Cloud', 4.95, 24),
+('usr-trabajador-2', 'Valentina Gómez', 'valentina.gomez@diseno.co', '$2y$10$eO1vV5lI7vR9sJ9x6kQvU.oKqWqW5Z3F4sR5T6U7V8W9X0Y1Z2a3b', 'TRABAJADOR', 'ACTIVO', 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80', '+57 315 987 6543', 'Cali, Valle del Cauca', 'Diseñadora UX/UI & Especialista en Design Systems', 4.90, 19),
+('usr-admin-1', 'Luis Yamit Tombe', 'admin@echelecamello.co', '$2y$10$eO1vV5lI7vR9sJ9x6kQvU.oKqWqW5Z3F4sR5T6U7V8W9X0Y1Z2a3b', 'ADMINISTRADOR', 'ACTIVO', 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80', '+57 300 000 0000', 'Popayán / Remoto', 'Administrador Principal de la Plataforma', 5.00, 50)
+ON DUPLICATE KEY UPDATE `name`=VALUES(`name`);
+
+-- ==============================================================
+-- DATOS SEED PARA SOLICITUDES EN DIVERSOS ESTADOS (Patrón State)
+-- ==============================================================
+INSERT INTO `solicitudes` (`id`, `cliente_id`, `trabajador_id`, `servicio_id`, `titulo`, `descripcion`, `estado`, `fecha_programada`, `direccion`, `valor_propuesto`, `valor_acordado`, `motivo_cancelacion`) VALUES
+('sol-001', 'usr-cliente-1', 'usr-trabajador-1', 'stark-frontend-senior', 'Desarrollo de Módulo de Pagos con Pasarela Wompi', 'Necesitamos integrar la pasarela de pagos Wompi y PSE en nuestra plataforma web con webhook seguro.', 'PROGRAMADA', '2026-10-25 09:30:00', 'Modalidad Remota (Google Meet)', 3500000, 3500000, NULL),
+('sol-002', 'usr-cliente-1', 'usr-trabajador-2', 'apex-designer-uiux', 'Diseño de Interfaz Móvil y Prototipo Figma', 'Rediseño completo del flujo de onboarding y dashboard de usuario para app iOS y Android.', 'EN_PROCESO', '2026-10-22 14:00:00', 'Remoto / Figma Workspace', 2800000, 2800000, NULL),
+('sol-003', 'usr-cliente-1', 'usr-trabajador-1', 'stark-frontend-senior', 'Auditoría de Rendimiento Web y Core Web Vitals', 'Diagnóstico y optimización para alcanzar puntaje 95+ en Google PageSpeed Insights.', 'PENDIENTE', NULL, 'Remoto (Asíncrono)', 1500000, 0, NULL),
+('sol-004', 'usr-cliente-1', 'usr-trabajador-2', 'coordinadora-lead-designer', 'Creación de Design Tokens y Guía de Estilo', 'Documentación estructurada de tokens de color, tipografía y componentes atómicos.', 'FINALIZADA', '2026-10-18 10:00:00', 'Entregado en Storybook', 2200000, 2200000, NULL),
+('sol-005', 'usr-cliente-1', 'usr-trabajador-1', 'nubank-fullstack-lead', 'Migración de Monolito a Microservicios en Docker', 'Análisis previo y contenedorización de 3 APIs críticas en ambiente de pruebas.', 'RECHAZADA', NULL, 'Remoto', 4000000, 0, 'No dispongo de disponibilidad horaria para el plazo solicitado de 48 horas.')
+ON DUPLICATE KEY UPDATE `titulo`=VALUES(`titulo`);
+
+-- ==============================================================
+-- DATOS SEED PARA CONVERSACIONES Y MENSAJES
+-- ==============================================================
+INSERT INTO `conversaciones` (`id`, `cliente_id`, `trabajador_id`, `solicitud_id`, `ultimo_mensaje`, `ultimo_mensaje_at`) VALUES
+('conv-001', 'usr-cliente-1', 'usr-trabajador-1', 'sol-001', '¡Excelente! Quedamos confirmados para el kickoff el sábado a las 9:30 AM.', '2026-10-21 11:45:00'),
+('conv-002', 'usr-cliente-1', 'usr-trabajador-2', 'sol-002', 'Te he compartido el enlace del prototipo en Figma con los comentarios resueltos.', '2026-10-21 12:10:00')
+ON DUPLICATE KEY UPDATE `ultimo_mensaje`=VALUES(`ultimo_mensaje`);
+
+INSERT INTO `mensajes` (`id`, `conversacion_id`, `remitente_id`, `contenido`, `adjunto_url`, `adjunto_tipo`, `leido`, `created_at`) VALUES
+('msg-101', 'conv-001', 'usr-cliente-1', 'Hola Camilo, un gusto saludarte. Vimos tu portafolio y nos interesa avanzar con el módulo de pagos.', NULL, NULL, 1, '2026-10-21 10:00:00'),
+('msg-102', 'conv-001', 'usr-trabajador-1', '¡Hola Camila! Muchas gracias por escribirme. Con gusto podemos agendar una sesión inicial para revisar los endpoints de Wompi.', NULL, NULL, 1, '2026-10-21 10:15:00'),
+('msg-103', 'conv-001', 'usr-cliente-1', 'Perfecto. Acabo de aprobar la propuesta económica por $3.500.000 COP y programé la fecha.', NULL, NULL, 1, '2026-10-21 11:30:00'),
+('msg-104', 'conv-001', 'usr-trabajador-1', '¡Excelente! Quedamos confirmados para el kickoff el sábado a las 9:30 AM.', NULL, NULL, 1, '2026-10-21 11:45:00'),
+('msg-201', 'conv-002', 'usr-trabajador-2', 'Hola Camila, acabo de subir los wireframes de alta fidelidad para el flujo de checkout.', 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=400&q=80', 'image', 1, '2026-10-21 11:00:00'),
+('msg-202', 'conv-002', 'usr-cliente-1', '¡Quedaron preciosos! Me encanta la suavidad de los tonos pastel y la claridad de los botones.', NULL, NULL, 1, '2026-10-21 11:50:00'),
+('msg-203', 'conv-002', 'usr-trabajador-2', 'Te he compartido el enlace del prototipo en Figma con los comentarios resueltos.', NULL, NULL, 0, '2026-10-21 12:10:00')
+ON DUPLICATE KEY UPDATE `contenido`=VALUES(`contenido`);
+
+-- ==============================================================
+-- DATOS SEED PARA NOTIFICACIONES (Observer/PubSub)
+-- ==============================================================
+INSERT INTO `notificaciones` (`id`, `usuario_id`, `titulo`, `mensaje`, `tipo`, `enlace`, `leida`, `created_at`) VALUES
+('notif-001', 'usr-trabajador-1', 'Nueva Solicitud Recibida', 'Camila Ramos te ha enviado una solicitud para "Auditoría de Rendimiento Web".', 'solicitud', 'requests.php?id=sol-003', 0, '2026-10-21 09:00:00'),
+('notif-002', 'usr-cliente-1', 'Solicitud Programada con Éxito', 'Tu solicitud "Módulo de Pagos con Pasarela Wompi" ha sido agendada para el 25 de Octubre.', 'solicitud', 'requests.php?id=sol-001', 0, '2026-10-21 11:30:00'),
+('notif-003', 'usr-cliente-1', 'Nuevo Mensaje en Chat', 'Valentina Gómez: "Te he compartido el enlace del prototipo en Figma..."', 'mensaje', 'messages.php?conv=conv-002', 0, '2026-10-21 12:10:00'),
+('notif-004', 'usr-trabajador-2', 'Calificación 5 Estrellas Recibida ⭐', 'Camila Ramos valoró tu servicio "Design Tokens y Guía de Estilo" con 5 estrellas.', 'calificacion', 'requests.php?id=sol-004', 1, '2026-10-18 11:30:00')
+ON DUPLICATE KEY UPDATE `titulo`=VALUES(`titulo`);
+
+-- ==============================================================
+-- DATOS SEED PARA CALIFICACIONES (1 a 5 Estrellas)
+-- ==============================================================
+INSERT INTO `calificaciones` (`id`, `solicitud_id`, `cliente_id`, `trabajador_id`, `puntuacion`, `comentario`, `created_at`) VALUES
+('cal-001', 'sol-004', 'usr-cliente-1', 'usr-trabajador-2', 5, '¡Trabajo impecable! La guía de tokens quedó clara, modular y lista para sincronizarse con código. Recomendadísima al 100%.', '2026-10-18 11:20:00')
+ON DUPLICATE KEY UPDATE `comentario`=VALUES(`comentario`);
+
+-- ==============================================================
+-- DATOS SEED PARA REPORTES DE MODERACIÓN (Patrón State)
+-- ==============================================================
+INSERT INTO `reportes` (`id`, `reportante_id`, `tipo_entidad`, `entidad_id`, `motivo`, `estado`, `resolucion`, `moderador_id`, `created_at`) VALUES
+('rep-001', 'usr-cliente-1', 'servicio', 'stark-frontend-senior', 'Consulta sobre requisitos de prueba técnica desactualizados.', 'RESUELTO', 'Se coordinó con el líder técnico para actualizar la descripción con la versión correcta.', 'usr-admin-1', '2026-10-15 14:00:00')
+ON DUPLICATE KEY UPDATE `motivo`=VALUES(`motivo`);
