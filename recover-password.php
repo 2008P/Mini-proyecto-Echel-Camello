@@ -78,146 +78,160 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="max-w-xl mx-auto px-4 py-12">
-  <div class="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E2D8] shadow-[0_12px_40px_rgba(44,39,36,0.05)]">
+  <div class="y2k-card overflow-hidden border border-[#00F0FF]/40 shadow-[0_0_35px_rgba(0,240,255,0.25)]">
     
-    <?php if ($validTokenUser): ?>
-      <!-- ETAPA 2: DEFINIR NUEVA CONTRASEÑA -->
-      <div class="text-center mb-8">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EAF4F4] text-[#537A72] border border-[#CCE3DE] mb-3">
-          <span class="material-symbols-outlined text-[15px]">password</span> Token Verificado
-        </span>
-        <h1 class="text-2xl font-bold font-headline text-[#2C2724]">Restablecer Contraseña</h1>
-        <p class="text-sm text-[#7A726A] mt-1">
-          Ingresa la nueva contraseña para <strong><?php echo htmlspecialchars($validTokenUser['email']); ?></strong>
-        </p>
+    <!-- Barra Retro OS Y2K -->
+    <div class="y2k-window-bar">
+      <div class="y2k-window-dots">
+        <span class="y2k-window-dot y2k-dot-red"></span>
+        <span class="y2k-window-dot y2k-dot-yellow"></span>
+        <span class="y2k-window-dot y2k-dot-green"></span>
       </div>
+      <span>PASSWORD_RECOVERY // SECURE_TOKEN_SYSTEM</span>
+      <span class="text-[10px] text-[#FF007F] font-bold">✦ ENCRYPTED</span>
+    </div>
 
-      <?php if ($error): ?>
-        <div class="mb-6 p-4 rounded-2xl bg-[#FFF0F0] border border-[#F5C6CB] text-[#B94A48] text-xs font-semibold flex items-center gap-2">
-          <span class="material-symbols-outlined text-[18px]">error</span>
-          <span><?php echo htmlspecialchars($error); ?></span>
-        </div>
-      <?php endif; ?>
-
-      <form method="POST" action="recover-password.php?token=<?php echo htmlspecialchars($token); ?>" class="space-y-4">
-        <input type="hidden" name="action" value="reset_password" />
-        
-        <div>
-          <label class="block text-xs font-bold text-[#2C2724] uppercase tracking-wider mb-1.5">
-            Nueva Contraseña
-          </label>
-          <input 
-            type="password" 
-            name="new_password" 
-            required 
-            placeholder="Mínimo 6 caracteres" 
-            class="w-full py-2.5 px-3.5 rounded-xl border border-[#E8E2D8] text-sm"
-          />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-[#2C2724] uppercase tracking-wider mb-1.5">
-            Confirmar Nueva Contraseña
-          </label>
-          <input 
-            type="password" 
-            name="new_password_confirm" 
-            required 
-            placeholder="Repite la contraseña" 
-            class="w-full py-2.5 px-3.5 rounded-xl border border-[#E8E2D8] text-sm"
-          />
-        </div>
-
-        <button 
-          type="submit" 
-          class="w-full py-3.5 px-6 rounded-xl bg-[#6B9080] hover:bg-[#5A7C6E] text-white font-bold text-sm shadow-[0_4px_14px_rgba(107,144,128,0.3)] transition-all flex items-center justify-center gap-2 mt-4"
-        >
-          <span class="material-symbols-outlined text-[18px]">lock_reset</span>
-          <span>Guardar Nueva Contraseña</span>
-        </button>
-      </form>
-
-    <?php else: ?>
-      <!-- ETAPA 1: SOLICITAR RECUPERACIÓN -->
-      <div class="text-center mb-8">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FDF5F2] text-[#A25844] border border-[#F9D6C9] mb-3">
-          <span class="material-symbols-outlined text-[15px]">lock_open</span> Desafío de Seguridad
-        </span>
-        <h1 class="text-3xl font-bold font-headline text-[#2C2724]">Recuperar Contraseña</h1>
-        <p class="text-sm text-[#7A726A] mt-1.5">
-          Escribe tu correo registrado y te enviaremos un token seguro de restablecimiento.
-        </p>
-      </div>
-
-      <?php if ($error): ?>
-        <div class="mb-6 p-4 rounded-2xl bg-[#FFF0F0] border border-[#F5C6CB] text-[#B94A48] text-xs font-semibold flex items-center gap-2">
-          <span class="material-symbols-outlined text-[18px]">error</span>
-          <span><?php echo htmlspecialchars($error); ?></span>
-        </div>
-      <?php endif; ?>
-
-      <?php if ($success): ?>
-        <div class="mb-6 p-4 rounded-2xl bg-[#EAF4F4] border border-[#CCE3DE] text-[#537A72] text-xs font-semibold flex items-center gap-2">
-          <span class="material-symbols-outlined text-[18px]">mark_email_read</span>
-          <span><?php echo htmlspecialchars($success); ?></span>
-        </div>
-      <?php endif; ?>
-
-      <?php if ($simulatedMail): ?>
-        <!-- DEMOSTRACIÓN DEL ADAPTER SMTP PARA EVALUACIÓN -->
-        <div class="mb-6 p-5 rounded-2xl bg-[#FBF9F5] border border-[#E8E2D8] text-left">
-          <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E2D8]">
-            <span class="text-xs font-bold text-[#537A72] uppercase flex items-center gap-1">
-              <span class="material-symbols-outlined text-[16px]">forward_to_inbox</span>
-              Correo Simulado Generado por Adapter
-            </span>
-          </div>
-          <p class="text-xs text-[#56504A] mb-3">
-            Destinatario: <strong><?php echo htmlspecialchars($simulatedMail['destinatario']); ?></strong><br>
-            Puedes restablecer inmediatamente la contraseña con este botón:
+    <div class="p-8 sm:p-10">
+      <?php if ($validTokenUser): ?>
+        <!-- ETAPA 2: DEFINIR NUEVA CONTRASEÑA -->
+        <div class="text-center mb-8">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#00FF88]/20 text-[#00FF88] border border-[#00FF88]/50 shadow-[0_0_10px_rgba(0,255,136,0.3)] mb-3">
+            <span class="material-symbols-outlined text-[15px]">password</span> Token Verificado ✓
+          </span>
+          <h1 class="text-2xl font-black font-headline text-white tracking-tight">Restablecer Contraseña</h1>
+          <p class="text-xs sm:text-sm text-[#94A3B8] mt-1">
+            Ingresa la nueva contraseña para <strong class="text-[#00F0FF]"><?php echo htmlspecialchars($validTokenUser['email']); ?></strong>
           </p>
-          <a href="<?php echo htmlspecialchars($simulatedMail['url']); ?>" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#6B9080] hover:bg-[#5A7C6E] text-white text-xs font-bold shadow-sm transition-all">
-            <span class="material-symbols-outlined text-[16px]">key</span>
-            <span>Restablecer Contraseña Ahora</span>
+        </div>
+
+        <?php if ($error): ?>
+          <div class="mb-6 p-4 rounded-2xl bg-[#FF004F]/15 border border-[#FF004F]/50 text-[#FF4D8D] text-xs font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">error</span>
+            <span><?php echo htmlspecialchars($error); ?></span>
+          </div>
+        <?php endif; ?>
+
+        <form method="POST" action="recover-password.php?token=<?php echo htmlspecialchars($token); ?>" class="space-y-4">
+          <input type="hidden" name="action" value="reset_password" />
+          
+          <div>
+            <label class="block text-xs font-bold text-[#00F0FF] uppercase tracking-wider mb-1.5">
+              Nueva Contraseña
+            </label>
+            <input 
+              type="password" 
+              name="new_password" 
+              required 
+              placeholder="Mínimo 6 caracteres" 
+              class="w-full py-2.5 px-3.5 rounded-xl border border-[#00F0FF]/40 text-sm text-white"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-[#00F0FF] uppercase tracking-wider mb-1.5">
+              Confirmar Nueva Contraseña
+            </label>
+            <input 
+              type="password" 
+              name="new_password_confirm" 
+              required 
+              placeholder="Repite la contraseña" 
+              class="w-full py-2.5 px-3.5 rounded-xl border border-[#00F0FF]/40 text-sm text-white"
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full py-3.5 px-6 rounded-xl btn-y2k text-white font-black text-sm shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all flex items-center justify-center gap-2 mt-4 cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-[18px]">lock_reset</span>
+            <span>Guardar Nueva Contraseña</span>
+          </button>
+        </form>
+
+      <?php else: ?>
+        <!-- ETAPA 1: SOLICITAR RECUPERACIÓN -->
+        <div class="text-center mb-8">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#FF007F]/20 text-[#00F0FF] border border-[#00F0FF]/40 shadow-[0_0_10px_rgba(0,240,255,0.3)] mb-3">
+            <span class="material-symbols-outlined text-[15px]">lock_open</span> Desafío de Seguridad
+          </span>
+          <h1 class="text-3xl font-black font-headline text-white tracking-tight">Recuperar Contraseña</h1>
+          <p class="text-xs sm:text-sm text-[#94A3B8] mt-1.5">
+            Escribe tu correo registrado y te enviaremos un token seguro de restablecimiento.
+          </p>
+        </div>
+
+        <?php if ($error): ?>
+          <div class="mb-6 p-4 rounded-2xl bg-[#FF004F]/15 border border-[#FF004F]/50 text-[#FF4D8D] text-xs font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">error</span>
+            <span><?php echo htmlspecialchars($error); ?></span>
+          </div>
+        <?php endif; ?>
+
+        <?php if ($success): ?>
+          <div class="mb-6 p-4 rounded-2xl bg-[#00FF88]/15 border border-[#00FF88]/50 text-[#00FF88] text-xs font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,136,0.3)]">
+            <span class="material-symbols-outlined text-[18px]">mark_email_read</span>
+            <span><?php echo htmlspecialchars($success); ?></span>
+          </div>
+        <?php endif; ?>
+
+        <?php if ($simulatedMail): ?>
+          <!-- DEMOSTRACIÓN DEL ADAPTER SMTP PARA EVALUACIÓN -->
+          <div class="mb-6 p-5 rounded-2xl bg-[#140E33] border border-[#00F0FF]/40 text-left shadow-[0_0_20px_rgba(0,240,255,0.2)]">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#00F0FF]/20">
+              <span class="text-xs font-bold text-[#00F0FF] uppercase flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">forward_to_inbox</span>
+                Correo Simulado Generado por Adapter
+              </span>
+            </div>
+            <p class="text-xs text-[#CBD5E1] mb-3">
+              Destinatario: <strong class="text-[#00F0FF]"><?php echo htmlspecialchars($simulatedMail['destinatario']); ?></strong><br>
+              Puedes restablecer inmediatamente la contraseña con este botón:
+            </p>
+            <a href="<?php echo htmlspecialchars($simulatedMail['url']); ?>" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl btn-y2k text-white text-xs font-black shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
+              <span class="material-symbols-outlined text-[16px]">key</span>
+              <span>Restablecer Contraseña Ahora</span>
+            </a>
+          </div>
+        <?php endif; ?>
+
+        <form method="POST" action="recover-password.php" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-[#00F0FF] uppercase tracking-wider mb-1.5">
+              Correo Electrónico
+            </label>
+            <div class="relative">
+              <input 
+                type="email" 
+                name="email" 
+                required 
+                placeholder="tu.correo@echelecamello.co" 
+                class="w-full pl-10 pr-4 py-3 rounded-xl border border-[#00F0FF]/40 text-sm text-white focus:border-[#00F0FF] focus:ring-2 focus:ring-[#00F0FF]/30"
+              />
+              <span class="material-symbols-outlined absolute left-3 top-3.5 text-[#00F0FF] text-[18px]">mail</span>
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full py-3.5 px-6 rounded-xl btn-y2k text-white font-black text-sm shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-[18px]">send</span>
+            <span>Enviar Enlace de Recuperación</span>
+          </button>
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-[#00F0FF]/20 text-center">
+          <a href="login.php" class="text-xs font-bold text-[#00F0FF] hover:underline flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+            <span>Volver al Inicio de Sesión</span>
           </a>
         </div>
       <?php endif; ?>
-
-      <form method="POST" action="recover-password.php" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-[#2C2724] uppercase tracking-wider mb-1.5">
-            Correo Electrónico
-          </label>
-          <div class="relative">
-            <input 
-              type="email" 
-              name="email" 
-              required 
-              placeholder="tu.correo@echelecamello.co" 
-              class="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E8E2D8] text-sm focus:border-[#6B9080] focus:ring-2 focus:ring-[#6B9080]/20"
-            />
-            <span class="material-symbols-outlined absolute left-3 top-3.5 text-[#8C847C] text-[18px]">mail</span>
-          </div>
-        </div>
-
-        <button 
-          type="submit" 
-          class="w-full py-3.5 px-6 rounded-xl bg-[#6B9080] hover:bg-[#5A7C6E] text-white font-bold text-sm shadow-[0_4px_14px_rgba(107,144,128,0.3)] transition-all flex items-center justify-center gap-2"
-        >
-          <span class="material-symbols-outlined text-[18px]">send</span>
-          <span>Enviar Enlace de Recuperación</span>
-        </button>
-      </form>
-
-      <div class="mt-8 pt-6 border-t border-[#F0EAE1] text-center">
-        <a href="login.php" class="text-xs font-bold text-[#537A72] hover:underline flex items-center justify-center gap-1">
-          <span class="material-symbols-outlined text-[16px]">arrow_back</span>
-          <span>Volver al Inicio de Sesión</span>
-        </a>
-      </div>
-    <?php endif; ?>
+    </div>
 
   </div>
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+
